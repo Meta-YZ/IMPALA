@@ -1,0 +1,27 @@
+syntax = "proto3";
+package message;  // 包的名称
+
+service IMPALA{
+  rpc get_trajectory (TrajectoryRequest) returns (TrajectoryResponse);
+  rpc send_parameter (ParameterRequest) returns (ParameterResponse);
+}
+
+// 客户端向服务端发出轨迹信息：字符串类型
+message TrajectoryRequest{
+  string trajectory = 1;
+}
+
+// 服务端向客户端响应出轨迹信息：字符号类型
+message TrajectoryResponse{
+  string message = 1;
+}
+
+// 客户端向服务端请求网络参数（也就是策略）：字符串类型
+message ParameterRequest{
+  string parameter = 1;
+}
+
+// 服务端向客户端响应出参数信息（也就是策略）：字节类型
+message ParameterResponse{
+  bytes message = 1;
+}
